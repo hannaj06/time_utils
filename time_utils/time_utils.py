@@ -4,7 +4,19 @@ import time
 
 class stopWatch(object):
     '''
-    Helper class to time processes
+    Helper class to time python processes
+    
+    Basic usage:
+
+    >>> sw = stopWatch()
+    >>> sw.lap()
+    Lap 1:
+    15 second(s)
+    datetime.timedelta(seconds=15, microseconds=693657)
+    >>> sw.lap()
+    Lap 2:
+    4 second(s)
+    datetime.timedelta(seconds=4, microseconds=751870)
     '''
     def __init__(self):
         self.start = datetime.now()
@@ -39,10 +51,9 @@ class stopWatch(object):
         return delta
 
             
-def ts_dict(timestamp):
+def ts_dict(timestamp=None):
     '''
-    timestamp <datetime obj>
-              use 'now' to return the current timestamp  
+    timestamp <datetime obj> defaults to utc now
     
     returns a timestamp dict with keys:
         * year YYYY
@@ -53,8 +64,8 @@ def ts_dict(timestamp):
         * sec SS
     '''
     
-    if timestamp == 'now':
-        timestamp = datetime.now()
+    if not timestamp:
+        timestamp = datetime.utcnow()
 
     timestamp_dict = {
             'year': timestamp.strftime('%Y'),
@@ -68,7 +79,7 @@ def ts_dict(timestamp):
     return timestamp_dict
 
 
-def sql_ts(timestamp, sysout=False):
+def sql_ts(timestamp=None, sysout=False):
     '''
     timestamp <datetime obj>
               use 'now' to return the current timestamp 
@@ -77,9 +88,7 @@ def sql_ts(timestamp, sysout=False):
     
     YYYY-MM-DD HH:MM:SS
     '''
-    if timestamp == 'now':
-        timestamp = datetime.now()
-    elif timestamp == 'utc_now':
+    if not timestamp == 'now':
         timestamp = datetime.utcnow()
     
     ts = timestamp.strftime('%Y-%m-%d %H:%M:%S')
@@ -90,34 +99,31 @@ def sql_ts(timestamp, sysout=False):
     return ts
 
 
-def s3_ts(timestamp):
+def s3_ts(timestamp=None):
     '''
-    timestamp <datetime obj>
-              use 'now' to return the current timestamp 
+    timestamp <datetime obj> defaults to utc now
 
-    returns s3 ts format /<year>/<month>/DD_HH:MM:SS
+
+    returns s3 ts format /YYYY/MM/DD/
     '''
 
-    if timestamp == 'now':
-        timestamp = datetime.now()
-    elif timestamp == 'utc_now':
+    if not timestamp:
         timestamp = datetime.utcnow()
 
-    return timestamp.strftime('/%Y/%m/%d/_%H:%M:%S')
+
+    return timestamp.strftime('/%Y/%m/%d/')
 
 
-def s3_glue_ts(timestamp):
+def s3_glue_ts(timestamp=None):
     '''
     timestamp <datetime obj>
               use 'now' to return the current timestamp 
               
     returns s3 AWS glue friendly key parition
     '''
-    if timestamp == 'now':
-        timestamp = datetime.now()
-    elif timestamp == 'utc_now':
+    if not timestamp:
         timestamp = datetime.utcnow()
     
-    return timestamp.strftime('''/year=%Y/month=%m/day=%d/%Y-%m-%d_%H:%M:%S''')
+    return timestamp.strftime('/year=%Y/month=%m/day=%d/')
     
 
