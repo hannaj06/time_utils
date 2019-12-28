@@ -12,6 +12,11 @@ class stopWatch(object):
         self.lap_num = 0
 
     def lap(self, sysout=True):
+        """
+        sysout <boolean> defaults to True
+                prints elapsed time
+        returns timedelta instance 
+        """
         self.end = datetime.now()
         delta = self.end - self.start
         self.start = self.end
