@@ -29,6 +29,7 @@ class stopWatch(object):
                 prints elapsed time
         returns timedelta instance
         """
+
         self.end = datetime.now()
         delta = self.end - self.start
         self.start = self.end
@@ -88,6 +89,7 @@ def sql_ts(timestamp=None, sysout=False):
 
     YYYY-MM-DD HH:MM:SS
     """
+
     if not timestamp == "now":
         timestamp = datetime.utcnow()
 
@@ -120,6 +122,7 @@ def s3_glue_ts(timestamp=None):
 
     returns s3 AWS glue friendly key parition
     """
+
     if not timestamp:
         timestamp = datetime.utcnow()
 
