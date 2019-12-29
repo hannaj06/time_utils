@@ -20,7 +20,7 @@ datetime.timedelta(seconds=4, microseconds=751870)
 All functions default to utcnow(), however a datetime object can be passed in to any function.
 
 #### ts_dict
-```
+```python
 >>> tu.time_utils.ts_dict()
 {
 'year': '2019', 
@@ -45,7 +45,7 @@ All functions default to utcnow(), however a datetime object can be passed in to
 ```
 
 #### s3_glue_ts
-```
+```python
 >>> tu.time_utils.s3_glue_ts()
 '/year=2019/month=12/day=29/'
 ```
