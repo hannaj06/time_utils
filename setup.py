@@ -7,7 +7,7 @@ setuptools.setup(
     name="time_utils",
     version="1.0.0",
     author="Joe Hanna",
-    description="Helper class to time processes",
+    description="Helper class to time python processes",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/hannaj06/time_utils",
