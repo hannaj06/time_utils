@@ -2,7 +2,11 @@
 
 Basic python package to time processes similar to a stopwatch.  This package also includes various pre-formated timestamps for sql, s3 key prefixes, and s3 glues prefixes.
 
-### stopWatch basic usage
+### stopWatch 
+
+A class intended to minimic the functionality of a stop watch.  The lap function will return a human readable string of how much total time was elapsed as well as the lap time.  
+
+basic usage:
 ```python
 >>> from time_utils import time_utils as tu
 >>> sw = tu.stopWatch()
