@@ -7,13 +7,21 @@ Basic python package to time processes similar to a stopwatch.  This package als
 >>> from time_utils.time_utils import stopWatch
 >>> sw = stopWatch()
 >>> sw.lap()
-Lap 1:
-15 second(s)
-datetime.timedelta(seconds=15, microseconds=693657)
->>> sw.lap()
-Lap 2:
+Total Time:
 4 second(s)
-datetime.timedelta(seconds=4, microseconds=751870)
+
+Lap 1:
+4 second(s)
+
+datetime.timedelta(seconds=4, microseconds=218298)
+>>> sw.lap()
+Total Time:
+15 second(s)
+
+Lap 2:
+11 second(s)
+
+datetime.timedelta(seconds=11, microseconds=440822)
 ```
 
 ### preformated datetime outputs

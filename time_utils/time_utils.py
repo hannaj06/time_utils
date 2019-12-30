@@ -9,17 +9,26 @@ class stopWatch(object):
 
     >>> sw = stopWatch()
     >>> sw.lap()
-    Lap 1:
-    15 second(s)
-    datetime.timedelta(seconds=15, microseconds=693657)
-    >>> sw.lap()
-    Lap 2:
+    Total Time:
     4 second(s)
-    datetime.timedelta(seconds=4, microseconds=751870)
+
+    Lap 1:
+    4 second(s)
+
+    datetime.timedelta(seconds=4, microseconds=218298)
+    >>> sw.lap()
+    Total Time:
+    15 second(s)
+
+    Lap 2:
+    11 second(s)
+
+    datetime.timedelta(seconds=11, microseconds=440822)
     """
 
     def __init__(self):
         self.start = datetime.now()
+        self.previous_lap = datetime.now()
         self.end = None
         self.lap_num = 0
 
@@ -27,29 +36,44 @@ class stopWatch(object):
         """
         sysout <boolean> defaults to True
                 prints elapsed time
-        returns timedelta instance
+        returns timedelta for laptime
         """
 
         self.end = datetime.now()
-        delta = self.end - self.start
-        self.start = self.end
         self.lap_num += 1
+        delta = self.end - self.previous_lap
+        lap_delta = self.ts_delta_str(self.previous_lap, self.end)
+        total_delta = self.ts_delta_str(self.start, self.end)
+        self.previous_lap = self.end
+
+        if sysout is True:
+            print(f"Total Time:\n{total_delta}\n")
+            print(f"Lap {self.lap_num}:\n{lap_delta}\n")
+
+        return delta
+
+    @staticmethod
+    def ts_delta_str(start, end):
+        """
+        start <datetime>
+        end <datetime>
+
+        returns <str> human readable elapsed time
+        """
+        delta = end - start
 
         ts = int(delta.total_seconds())
         hours, remainder = divmod(ts, 3600)
         minutes, seconds = divmod(remainder, 60)
 
-        if sysout is True:
-            print(f"Lap {self.lap_num}:")
+        if hours > 0:
+            delta_str = f"{hours} hour(s), {minutes} minute(s), {seconds} second(s)"
+        elif minutes > 0:
+            delta_str = f"{minutes} minute(s), {seconds} second(s)"
+        else:
+            delta_str = f"{seconds} second(s)"
 
-            if hours > 0:
-                print(f"{hours} hour(s), {minutes} minute(s), {seconds} second(s)")
-            elif minutes > 0:
-                print(f"{minutes} minute(s), {seconds} second(s)")
-            else:
-                print(f"{seconds} second(s)")
-
-        return delta
+        return delta_str
 
 
 def ts_dict(timestamp=None):

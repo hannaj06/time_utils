@@ -4,3 +4,5 @@ time_utils.sublime-workspace
 __pycache__/
 *.py[cod]
 *$py.class
+build/
+dist/
