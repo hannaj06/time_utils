@@ -4,8 +4,8 @@ Basic python package to time processes similar to a stopwatch.  This package als
 
 ### stopWatch basic usage
 ```python
->>> from time_utils.time_utils import stopWatch
->>> sw = stopWatch()
+>>> from time_utils import time_utils as tu
+>>> sw = tu.stopWatch()
 >>> sw.lap()
 Total Time:
 4 second(s)
@@ -24,7 +24,7 @@ Lap 2:
 datetime.timedelta(seconds=11, microseconds=440822)
 ```
 
-### preformated datetime outputs
+### preformatted datetime outputs
 All functions default to utcnow(), however a datetime object can be passed in to any function.
 
 #### ts_dict
