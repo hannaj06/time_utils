@@ -16,7 +16,7 @@ Lap 2:
 datetime.timedelta(seconds=4, microseconds=751870)
 ```
 
-### preformated datetime outputs
+### preformatted datetime outputs
 All functions default to utcnow(), however a datetime object can be passed in to any function.
 
 #### ts_dict
