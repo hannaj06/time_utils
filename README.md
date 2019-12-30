@@ -4,8 +4,8 @@ Basic python package to time processes similar to a stopwatch.  This package als
 
 ### stopWatch basic usage
 ```python
->>> from time_utils.time_utils import stopWatch
->>> sw = stopWatch()
+>>> from time_utils import time_utils as tu
+>>> sw = tu.stopWatch()
 >>> sw.lap()
 Lap 1:
 15 second(s)
